@@ -1,0 +1,57 @@
+{
+    "account" : {
+    "_id": ObjectId("64d0e46b41b1f90b4a3c3b08"),
+    "user_id": "c0e934f0-8a48-4e0f-83c3-f1183e97a68b",
+    "name": "Main Checking Account",
+    "type": "checking",
+    "balance": 1500.75,
+    "currency": "USD",
+    "created_at": ISODate("2024-08-01T12:30:00Z"),
+    "updated_at": ISODate("2024-08-01T12:30:00Z")},
+
+    "transaction" {
+        "_id": ObjectId"64d0e46b41b1f90b4a3c3b17"),
+        "user_id": "c0e934f0-8a48-4e0f-83c3-f1183e97a68b",
+        "account_id": ObjectId("64d0e46b41b1f90b4a3c3b08"),
+        "category_id": ObjectId("64d0e46b41b1f90b4a3c3b20"),
+        "amount": 150.75,
+        "type": "expense",
+        "description": "Purchase at grocery store",
+        "date": ISODate("2024-08-01T12:30:00Z"),
+        "created_at": ISODate("2024-08-01T12:30:00Z"),
+        "updated_at": ISODate("2024-08-01T12:30:00Z")
+    },
+
+    "category": {
+        "_id": ObjectId("64d0e46b41b1f90b4a3c3b21"),
+        "user_id": "c0e934f0-8a48-4e0f-83c3-f1183e97a68b",
+        "name": "Groceries",
+        "type": "expense",
+        "created_at": ISODate("2024-08-01T12:30:00Z"),
+        "updated_at": ISODate("2024-08-01T12:30:00Z")
+    },
+
+    "budget": {
+        "_id": ObjectId("64d0e46b41b1f90b4a3c3b22"),
+        "user_id": "c0e934f0-8a48-4e0f-83c3-f1183e97a68b",
+        "category_id": ObjectId("64d0e46b41b1f90b4a3c3b21"),
+        "amount": 500.00,
+        "period": "monthly",
+        "start_date": ISODate("2024-08-01T00:00:00Z"),
+        "end_date": ISODate("2024-08-31T23:59:59Z"),
+        "created_at": ISODate("2024-08-01T12:30:00Z"),
+        "updated_at": ISODate("2024-08-01T12:30:00Z")
+    },
+    
+    "goal": {
+        "_id": ObjectId("64d0e46b41b1f90b4a3c3b23"),
+        "user_id": "c0e934f0-8a48-4e0f-83c3-f1183e97a68b",
+        "name": "Save for Vacation",
+        "target_amount": 2000.00,
+        "current_amount": 500.00,
+        "deadline": ISODate("2024-12-31T23:59:59Z"),
+        "status": "in_progress",
+        "created_at": ISODate("2024-08-01T12:30:00Z"),
+        "updated_at": ISODate("2024-08-01T12:30:00Z")
+    }    
+}
