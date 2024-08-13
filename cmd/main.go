@@ -1,12 +1,12 @@
 package main
 
 import (
+	"budgeting_service/configs"
+	"budgeting_service/grpc"
+	"budgeting_service/pkg/logger"
+	"budgeting_service/services"
+	"budgeting_service/storage"
 	"context"
-	"users_service/configs"
-	"users_service/grpc"
-	"users_service/pkg/logger"
-	"users_service/service"
-	"users_service/storage"
 
 	"fmt"
 	"net"
@@ -18,15 +18,15 @@ func main() {
 	log := logger.NewLogger(cfg.ServiceName, cfg.LoggerLevel, cfg.LogPath)
 	defer logger.Cleanup(log)
 
-	storage, err := storage.New(context.Background(), cfg, &log)
+	storage, err := storage.NewIStorage(context.Background(), cfg, log)
 	if err != nil {
 		log.Panic("error while creating storage in main", logger.Error(err))
 		return
 	}
 	defer storage.Close()
 
-	services := service.NewServiceManager(storage, log)
-	server := grpc.SetUpServer(services, log)
+	services := services.NewIServiceManager(storage, log)
+	server := grpc.SetUpServer(services, storage, log)
 
 	listener, err := net.Listen("tcp",
 		cfg.UserServiceGrpcHost+cfg.UserServiceGrpcPort,
